@@ -3227,6 +3227,13 @@ input, select, textarea {
 
 		}
 
+		.header-right a {
+  font-size: 1.5em;
+  color: #000;
+  text-decoration: none;
+  margin-left: 1em;
+}	
+
 /* Menu */
 
 	#page-wrapper {
@@ -3295,6 +3302,7 @@ input, select, textarea {
 			border-bottom: solid 2px rgba(255, 255, 255, 0.125);
 			padding-bottom: 1em;
 		}
+
 
 		#menu .close {
 			background-image: url("images/close.svg");
