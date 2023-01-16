@@ -57,41 +57,44 @@
 										Our solution was developed in 2 separate modules, driving and plate detection, outlined in sections below. For communication between modules and software architecture, we employed ROS, 
 										a robotics framework commonly used by researachers to speed up development. Our ROS network is seen below. 
 									</p>
-									<!-- add ros network pic-->
+
+									<img src="images/autonomous_rover/ROS_Network.png" alt="HTML5 Icon" style="display: block; margin-bottom: 5%; margin-left: auto; margin-right: auto; width:90%;height:100%;">
 									
 									<h3 class="major">Plate Detection</h3>
 									<p>
-									To detect license plates, we also used computer vision techniques and the <strong>Python OpenCV</strong> library. To identify the characters on the license plates
-									as well as the relevant car, we developed <strong> Convolutional Neural Networks </strong> using the <strong> Keras </strong> library. To train 
-									our CNNs, we developed a <strong>bash scripting</strong> solution for automated data collection from the simulated environment. <strong>Google Colab</strong>
-									was an essential tool for development and testing of our networks.   
+										To detect license plates, we also used computer vision techniques and the <strong>Python OpenCV</strong> library. To identify the characters on the license plates
+										as well as the relevant car, we developed <strong> Convolutional Neural Networks </strong> using the <strong> Keras </strong> library. To train 
+										our CNNs, we developed a <strong>bash scripting</strong> solution for automated data collection from the simulated environment. <strong>Google Colab</strong>
+										was an essential tool for development and testing of our networks.   
 									</p>
-
+									<img src="images/autonomous_rover/CNN_Architecture.png" alt="HTML5 Icon" style="display: block; margin-bottom: 5%; margin-left: auto; margin-right: auto; width:50%;height:100%;">
+									
 									<h3 class="major">Driving</h3>
 									<p>For driving, we used classical computer vision techniques. This included contour detection, PID line following, with heavy use of 
 										the <strong>Python OpenCV</strong> library. 
 										We also implemented a <strong>state machine</strong> to define the state of the rover at all times.</p> 
-
-
-									<section class="features">
+										
+										
+									<h3 class="major">Other Projects</h3>	
+										<section class="features">
 										<article>
-											<a href="#" class="image"><img src="images/chonky1.png"  alt="" /></a>
+											<a href="https://chonkyrobot.com/" class="image"><img src="images/chonky1.png"  alt="" /></a>
 											<h3 class="major">Autonmous Treasure Retrieval Robot</h3>
 											<p>A robot designed to navigate an obstacle course while retrieving objects for 2021 Annual Engineering Physics Robotics Competition </p>
 											<a href="https://chonkyrobot.com/" class="special">Learn more</a>
 										</article>
 										<article>
-											<a href="#" class="image"><img src="images/sailbot/sailbot.png" alt="" /></a>
+											<a href="/sailbot.html" class="image"><img src="images/sailbot/sailbot.png" alt="" /></a>
 											<h3 class="major">UBC Sailbot - Electrical Engineer</h3>
 											<p>As an electrical member of this student design team team, I am working on building an 
 												autonomous sailbot to sail from Vancouver, BC to Maui, HI. </p>
-											<a href="https://www.ubcsailbot.org/" class="special">Learn more</a>
-										</article>
-									</section>
-
+												<a href="/sailbot.html" class="special">Learn more</a>
+											</article>
+										</section>
+										
+									</div>
 								</div>
-							</div>
-
+								
 					</section>
 
 				<!-- Footer -->

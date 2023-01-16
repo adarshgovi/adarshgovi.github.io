@@ -57,34 +57,35 @@
 									
 									<h3 class="major">Rudder System</h3>
 									
-									<video style="display: block; margin-left: auto; margin-right: auto; margin-bottom: 5%; width: 80%; ;height:40%;" autoplay loop>
+									<video style="display: block; margin-left: auto; margin-right: auto; margin-bottom: 5%; width: 80%; ;height:40%;" autoplay muted loop>
 										<source src="images/sailbot/rudr2.mp4" type="video/mp4">
 									</video>
-
+									
 									<p>
-									The rudder system consists of 2 motors, 2 motor controllers, the rudders themselves, microcontrollers and rotary encoders.
-									The rudders of the boat work in combination with the sails to control the direction of the boat. I worked on the implementation of the rudder acutation control 
-									in <strong>C</strong> on an <strong> STM 32 based microcontroller</strong> that is running an <strong>Real Time OS</strong>. 
-									The boat employs <strong><a href="https://en.wikipedia.org/wiki/CAN_bus">CAN</a></strong> 
-									to communicate across systems. The rudder recieves an angular position via CAN and engages the motor to reach the position, as defined by the rotoary encoder. 
-									I implemented a <strong>PID</strong> acutation algorithm that achieved <strong>20%</strong> greater angular accuracy, matched the speed of the two rudders 
-									and increased overall speed by <strong>20%</strong>.
+										The rudder system consists of 2 motors, 2 motor controllers, the rudders themselves, microcontrollers and rotary encoders.
+										The rudders of the boat work in combination with the sails to control the direction of the boat. I worked on the implementation of the rudder acutation control 
+										in <strong>C</strong> on an <strong> STM 32 based microcontroller</strong> that is running an <strong>Real Time OS</strong>. 
+										The boat employs <strong><a href="https://en.wikipedia.org/wiki/CAN_bus">CAN</a></strong> 
+										to communicate across systems. The rudder recieves an angular position via CAN and engages the motor to reach the position, as defined by the rotoary encoder. 
+										I implemented a <strong>PID</strong> acutation algorithm that achieved <strong>20%</strong> greater angular accuracy, matched the speed of the two rudders 
+										and increased overall speed by <strong>20%</strong>.
 									</p>
 									<!-- insert pics and vids -->
-
-
+									
+									
+									<h3 class="major">Other Projects</h3>
 									<section class="features">
 										<article>
-											<a href="#" class="image"><img src="images/chonky1.png"  alt="" /></a>
+											<a href="https://chonkyrobot.com/" class="image"><img src="images/chonky1.png"  alt="" /></a>
 											<h3 class="major">Autonmous Treasure Retrieval Robot</h3>
 											<p>A robot designed to navigate an obstacle course while retrieving objects for 2021 Annual Engineering Physics Robotics Competition </p>
 											<a href="https://chonkyrobot.com/" class="special">Learn more</a>
 										</article>
 										<article>
-											<a href="#" class="image"><img src="images/autonomous_rover/com_vis_comp.png" alt="" /></a>
+											<a href="/autonomous_rover.html" class="image"><img src="images/autonomous_rover/com_vis_comp.png" alt="" /></a>
 											<h3 class="major">2nd Place - Autonomous Driving Competition</h3>
 											<p>I worked to train a rover to drive around a simulated road while detecting license plates of nearby vehicles, avoiding pedestrians and other moving vehicles. </p>
-											<a href="https://www.ubcsailbot.org/" class="special">Learn more</a>
+											<a href="/autonomous_rover.html" class="special">Learn more</a>
 										</article>
 									</section>
 
