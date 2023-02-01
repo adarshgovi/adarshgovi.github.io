@@ -9,7 +9,7 @@
 		<title>Adarsh Govindan</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/sailbot.css" />
+		<link rel="stylesheet" href="assets/css/main.css" />
 		<link rel="icon" href="images/logo2.ico">
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
@@ -34,7 +34,7 @@
 					<section id="wrapper">
 						<header>
 							<div class="inner">
-								<h2>UBC Sailbot - Software Engineer</h2>
+								<h2>UBC Sailbot - Electrical Engineer</h2>
 							</div>
 						</header>
 
@@ -43,24 +43,17 @@
 								<div class="inner">
 
 									<h3 class="major">Project Overview</h3>
-									<p> Our student design team is working on an 18 ft autonomous sailbot to travel from Vancouver, BC to Maui, HI. As part of the team,
-										I have had a chance to work on various electro-mechanical systems and software development as we prepare the boat for launch.
+									<p> Our student design team is working on an 18 ft autonomous sailbot to travel from Vancouver, BC to Maui, HI. As part of the electrical team,
+										I have had a chance to work on various electro-mechanical systems and firmware development as we prepare the boat for launch.
 									</p>
 									
 									<!-- add driving video-->
 									
 									<p>
-										The team is also working on our next project, a vessel for data collection for research applications. For this project, I am working on
-										on the network systems of our boat. 
+										The team is also working on our next project, a vessel for data collection for research applications. For this project, I am working on preliminary
+										electrical system design by developing our power budget. 
 									</p>
 									<!-- add ros network pic-->
-									
-									<h3 class="major">Network Systems</h3>
-									<p>
-										For our next vessel, we are continuing to use <strong>ROS</strong> to communicate across various software modules on the boat.
-										I am currently implementing solutions for recieving data from our CAN network from various sensors on the boat, parsing this data
-										and then forwarding the information to other parts of our ROS network. 
-									</p>
 									
 									<h3 class="major">Rudder System</h3>
 									
@@ -71,12 +64,13 @@
 									<p>
 										The rudder system consists of 2 motors, 2 motor controllers, the rudders themselves, microcontrollers and rotary encoders.
 										The rudders of the boat work in combination with the sails to control the direction of the boat. I worked on the implementation of the rudder acutation control 
-										in <strong>C</strong> on an <strong> STM 32 based microcontroller</strong> that is running a <strong>Real Time OS</strong>. 
+										in <strong>C</strong> on an <strong> STM 32 based microcontroller</strong> that is running an <strong>Real Time OS</strong>. 
 										The boat employs <strong><a href="https://en.wikipedia.org/wiki/CAN_bus">CAN</a></strong> 
 										to communicate across systems. The rudder recieves an angular position via CAN and engages the motor to reach the position, as defined by the rotoary encoder. 
 										I implemented a <strong>PID</strong> acutation algorithm that achieved <strong>20%</strong> greater angular accuracy, matched the speed of the two rudders 
 										and increased overall speed by <strong>20%</strong>.
 									</p>
+									<!-- insert pics and vids -->
 									
 									
 									<h3 class="major">Other Projects</h3>
