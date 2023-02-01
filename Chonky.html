@@ -9,7 +9,7 @@
 		<title>Adarsh Govindan</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/autonomous_rover.css" />
+		<link rel="stylesheet" href="assets/css/chonky.css" />
 		<link rel="icon" href="images/logo2.ico">
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
@@ -34,8 +34,9 @@
 					<section id="wrapper">
 						<header>
 							<div class="inner">
-								<h2>2nd Place - Autonomous Driving Competition</h2>
-								<p></p>
+								<h2>Autonomous Treasure Retrieval Robot</h2>
+								<p><a href="https://chonkyrobot.com/" class="special">Project Website</a></p>
+								<p><a href="https://github.com/evinli/CHONKY" class="special">Github Repository</a></p>
 							</div>
 							<!-- add report?-->
 						</header>
@@ -45,43 +46,52 @@
 								<div class="inner">
 
 									<h3 class="major">Project Overview</h3>
-									<p>In building this project, I learned about machine learning, computer vision and using Linux. 
-										The objective of the competition was to navigate the <strong>Gazebo</strong> simulation environment autonmously while reading the license plates of nearby vehicles,
-										waiting at pedestrian crossings, and avoiding another moving vehicle. I worked with <a href='https://www.linkedin.com/in/long-phung/'> Mark Long </a> to develop our solution which resulted in a 2nd Place Finish, 
-										with <strong>0</strong> off course traversal, <strong>11/12</strong> license plates accurately read and <strong>1 min 46 s</strong> total track time (fastest completion). 
-									</p>
-									
-									<!-- add driving video-->
-									
-									<p>
-										Our solution was developed in 2 separate modules, driving and plate detection, outlined in sections below. For communication between modules and software architecture, we employed ROS, 
-										a robotics framework commonly used by researachers to speed up development. Our ROS network is seen below. 
+									<p> Consisting of a series of obstacles and hidden traps, the objective of the competition was to build a robot that could autonomously navigate temple ruins and recover lost treasures. 
+										While building my teams solution, I focused on software development and electrical design. This included implementation of a state machine,
+										control algorithms for a robotic arm and creating circuit simulations. 
 									</p>
 
-									<img src="images/autonomous_rover/ROS_Network.png" alt="HTML5 Icon" style="display: block; margin-bottom: 5%; margin-left: auto; margin-right: auto; width:90%;height:100%;">
-									
-									<h3 class="major">Plate Detection</h3>
+									<h3 class="major">Robotic Arm</h3>
 									<p>
-										To detect license plates, we also used computer vision techniques and the <strong>Python OpenCV</strong> library. To identify the characters on the license plates
-										as well as the relevant car, we developed <strong> Convolutional Neural Networks </strong> using the <strong> Keras </strong> library. To train 
-										our CNNs, we developed a <strong>bash scripting</strong> solution for automated data collection from the simulated environment. <strong>Google Colab</strong>
-										was an essential tool for development and testing of our networks. Our final network architecture is seen below.   
+										To retrieve and detect treasures along the course, our team designed and built a robotic arm with 4 degrees of freedom. For the arm,
+										I developed the control algorithms to actuate the arm. This included <strong>PID controllers</strong> to position each of the joints,
+										an <strong>inverse kinematics solver</strong> to position the arm in 3D space and treasure detection algorithms to filter and process <strong>ultrasonic sensor
+										data</strong>. Our code was implemented using a C/C++ hybrid architecture.
 									</p>
-									<img src="images/autonomous_rover/CNN_Architecture.png" alt="HTML5 Icon" style="display: block; margin-bottom: 5%; margin-left: auto; margin-right: auto; width:50%;height:100%;">
 									
-									<h3 class="major">Driving</h3>
-									<p>For driving, we used classical computer vision techniques. This included contour detection, PID line following, with heavy use of 
-										the <strong>Python OpenCV</strong> library. 
-										We also implemented a <strong>state machine</strong> to prescribe behaviour of the rover based on its current surroundings.</p> 
+									<div class="row gtr-uniform">
+											<div class="col-4"><span class="image fit"><img src="images/chonky/robotic_arm.jpg" alt="" /></span></div>
+											<div class="col-4"><span class="image fit"><img src="images/chonky/roboticarm2.jpg" alt="" /></span></div>
+											<div class="col-4"><span class="image fit"><img src="images/chonky/roboticarm3.jpg" alt="" /></span></div>
+									</div>
+									<p>
+										
+
+									</p>									
+									<h3 class="major">Signal Processing</h3>
+									<p>To navigate the course, a 10 kHz infrared beacon had been set up. However, to complicate matters, there was another beacon emitting a 9 kHz signal.
+										If we accidentally followed the 9 kHz signal, the robot would veer of course. To resolve this issue, I designed a filtration system that would 
+										only allow the 10 kHz signal through. This design involved several iterations, allowing me to learn to use circuit simulation tools such as 
+										<strong>LTSpice</strong>, building circuits on breadboards and protoboards, debugging circuits with an <strong>oscilloscope</strong> and <strong>soldering</strong>.
+									</p> 
+
+									<p> Our final design was a Butterworth bandpass filter, with a tight band around 10 kHz. The soldered board is shown below.</p>
+
+									<div class="box alt">
+										<div class="row gtr-uniform">
+											<div class="col-4" style="width:56%"><span class="image fit"><img src="images/chonky/spice sim.png" alt="" /></span></div>
+											<div class="col-4" style="width:30%"><span class="image fit"><img src="images/chonky/IR_Filtration.jpg" alt="" /></span></div>
+										</div>
+									</div>
 										
 										
 									<h3 class="major">Other Projects</h3>	
 										<section class="features">
 										<article>
-											<a href="Chonky.html" class="image"><img src="images/chonky1.png"  alt="" /></a>
+											<a href="https://chonkyrobot.com/" class="image"><img src="images/chonky1.png"  alt="" /></a>
 											<h3 class="major">Autonomous Treasure Retrieval Robot</h3>
 											<p>A robot designed to navigate an obstacle course while retrieving objects for 2022 Annual Engineering Physics Robotics Competition </p>
-											<a href="Chonky.html" class="special">Learn more</a>
+											<a href="https://chonkyrobot.com/" class="special">Learn more</a>
 										</article>
 										<article>
 											<a href="/sailbot.html" class="image"><img src="images/sailbot/sailbot.png" alt="" /></a>
