@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Adarsh Govindan</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/wiki_path_analyzer.css" />
+		<link rel="icon" href="images/logo2.ico">
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="index.html">Adarsh's Portfolio</a></h1>
+
+						<h2>
+							<a href="https://www.linkedin.com/in/adarsh-govindan/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a>
+							<a href="https://github.com/adarshgovi" class="icon brands fa-github"><span class="label">GitHub</span></a>
+						</h2>
+
+					</header>
+			
+
+				<!-- Wrapper -->
+					<section id="wrapper">
+						<header>
+							<div class="inner">
+								<h2>Wikipedia Path Analyzer</h2>
+							</div>
+							<!-- add report?-->
+						</header>
+
+						<!-- Content -->
+							<div class="wrapper">
+								<div class="inner">
+
+									<h3 class="major">Project Overview</h3>
+									<p> In this <strong>Java</strong> project, I worked with with 2 team members to develop a mediator service for wikipedia, along with 
+										a server application to interface with the mediator. The mediator service included functionality to get Wikipedia pages,
+										cache pages to minimize API calls and store history of requests. The most challenging functionality was a feature 
+										for the mediator to find the shortest path using links between two Wikipedia pages, effectively solving the
+										<a href='https://en.wikipedia.org/wiki/Wikipedia:Wiki_Game'>Wiki Game.</a>.
+									</p>
+
+									<h3 class="major">Server</h3>
+									<p>
+										To implement a server for users to intergace with our mediator service, our team implemented serveral thread safe methods
+										to account for multithreaded behaviour when multiple users try to connect to the server. This involved writing
+										several blocking and locking functions as well as working with synchronized methods with shared memory objects.
+
+									</p>
+
+									<h3 class="major">Shortest Path Processing</h3>
+
+									<p>To find the shortest path between two wikipedia pages, we implmented a bread first search algorithm that would query the various links
+										present on a wikipedia page. We treated each wikipedia page as a node on a directed graph with directed edges to pages linking
+										to the page as well as pages linked by the page.
+									</p> 
+
+										
+									<h3 class="major">Other Projects</h3>	
+										<section class="features">
+										<article>
+											<a href="https://chonkyrobot.com/" class="image"><img src="images/chonky1.png"  alt="" /></a>
+											<h3 class="major">Autonomous Treasure Retrieval Robot</h3>
+											<p>A robot designed to navigate an obstacle course while retrieving objects for 2022 Annual Engineering Physics Robotics Competition </p>
+											<a href="https://chonkyrobot.com/" class="special">Learn more</a>
+										</article>
+										<article>
+											<a href="/sailbot.html" class="image"><img src="images/sailbot/sailbot.png" alt="" /></a>
+											<h3 class="major">UBC Sailbot - Software Engineer</h3>
+											<p>As a software member of this student design team team, I am working on building an 
+												autonomous sailbot to sail from Vancouver, BC to Maui, HI. </p>
+												<a href="/sailbot.html" class="special">Learn more</a>
+											</article>
+										</section>
+										
+									</div>
+								</div>
+								
+					</section>
+
+				<!-- Footer -->
+				<section id="footer">
+					<div class="inner">
+						<h2 class="major">Get in touch</h2>
+						<p>If you'd like to learn more about any of my projects or get in touch about an opportunity, please reach out to me via LinkedIn or Email.</p>
+						<ul class="contact">
+							<li class="icon brands fa-linkedin"><a href="https://www.linkedin.com/in/adarsh-govindan/">linkedin.com/in/adarsh-govindan</a></li>
+							<li class="icon brands fa-github"><a href="https://github.com/adarshgovi">github.com/adarshgovi</a></li>
+							<li class="icon fa-envelope"><a href="adarshkgovindan@gmail.com">adarshkgovindan@gmail.com</a></li>
+						</ul>
+					</div>
+				</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
