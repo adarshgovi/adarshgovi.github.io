@@ -1,0 +1,123 @@
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Adarsh Govindan</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/ADC.css" />
+		<link rel="icon" href="images/logo2.ico">
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="index.html">Adarsh's Portfolio</a></h1>
+
+						<h2>
+							<a href="https://www.linkedin.com/in/adarsh-govindan/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a>
+							<a href="https://github.com/adarshgovi" class="icon brands fa-github"><span class="label">GitHub</span></a>
+						</h2>
+
+					</header>
+			
+
+				<!-- Wrapper -->
+					<section id="wrapper">
+						<header>
+							<div class="inner">
+								<h2>Analog to Digital Converter</h2>
+								<p><a href="images/ADC/ADC_Report.pdf" class="special">Project Report</a></p>
+							</div>
+						</header>
+
+						<!-- Content -->
+							<div class="wrapper">
+								<div class="inner">
+
+									<h3 class="major">Project Overview</h3>
+									<p> 
+										A common problem in electronics is being able to process and analyze analog signals such as sound from a microphone or light
+										in a camera sensor using digital systems, such as those in a computer. To achieve this, 
+										we use an analog to digital converter. In this project, I designed and built an analog to digital converter using a variety
+										of electrical components <strong>Op-Amps</strong>, a 7 segment digital display, <strong>logic gates</strong> and <strong>transistors</strong>.
+										During this process, I used a variety of electrical tools to debug and verify my circuits including an <strong>oscilloscope</strong> and a <strong>logic
+											analyzer</strong>. The circuit takes an input analog voltage signal as an input and displays the voltage value to the seven segment display.
+									</p>
+
+									<p>The circuit schematic is seen below.</p>
+
+									<img src="images/ADC/circuit_schematic.JPG" alt="Circuit Schematic for ADC" style="display: block; margin-bottom: 5%; margin-left: auto; margin-right: auto; width:9=60%;height:100%;">
+
+									<h3 class="major">Circuit Logic</h3>
+									<p>
+										A gate pulses are generated at a frequency proportional to the magnitude of the input voltage.
+										This pulse marks the start of data collection for other parts of the circuit. 
+										A clock pulse generator outputs a signal of constant frequency which is used to measure the period of the trigger pulse.
+										The counter is triggered by a gate pulse and counts the number of clock pulses until the next gate pulse is recieved. 
+										The count has a linear relationship to the input voltage and we then use this to display to the 7 segment display.
+									</p>
+
+									<p>
+										The constructed circuit is seen below.
+									</p>
+
+									<img src="images/ADC/ADC_breadboard.jpg" alt="Constructed ADC Circuit" style="display: block; margin-bottom: 5%; margin-left: auto; margin-right: auto; width:60%;height:100%;">
+									
+										
+										
+									<h3 class="major">Other Projects</h3>	
+										<section class="features">
+										<article>
+											<a href="https://chonkyrobot.com/" class="image"><img src="images/chonky1.png"  alt="" /></a>
+											<h3 class="major">Autonomous Treasure Retrieval Robot</h3>
+											<p>A robot designed to navigate an obstacle course while retrieving objects for 2022 Annual Engineering Physics Robotics Competition </p>
+											<a href="https://chonkyrobot.com/" class="special">Learn more</a>
+										</article>
+										<article>
+											<a href="/sailbot.html" class="image"><img src="images/sailbot/sailbot.png" alt="" /></a>
+											<h3 class="major">UBC Sailbot - Software Engineer</h3>
+											<p>As a software member of this student design team team, I am working on building an 
+												autonomous sailbot to sail from Vancouver, BC to Maui, HI. </p>
+												<a href="/sailbot.html" class="special">Learn more</a>
+											</article>
+										</section>
+										
+									</div>
+								</div>
+								
+					</section>
+
+				<!-- Footer -->
+				<section id="footer">
+					<div class="inner">
+						<h2 class="major">Get in touch</h2>
+						<p>If you'd like to learn more about any of my projects or get in touch about an opportunity, please reach out to me via LinkedIn or Email.</p>
+						<ul class="contact">
+							<li class="icon brands fa-linkedin"><a href="https://www.linkedin.com/in/adarsh-govindan/">linkedin.com/in/adarsh-govindan</a></li>
+							<li class="icon brands fa-github"><a href="https://github.com/adarshgovi">github.com/adarshgovi</a></li>
+							<li class="icon fa-envelope"><a href="adarshkgovindan@gmail.com">adarshkgovindan@gmail.com</a></li>
+						</ul>
+					</div>
+				</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
