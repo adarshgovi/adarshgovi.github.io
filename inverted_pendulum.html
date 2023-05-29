@@ -1,0 +1,119 @@
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Adarsh Govindan</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/inverted_pendulum.css" />
+		<link rel="icon" href="images/logo2.ico">
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="index.html">Adarsh's Portfolio</a></h1>
+
+						<h2>
+							<a href="https://www.linkedin.com/in/adarsh-govindan/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a>
+							<a href="https://github.com/adarshgovi" class="icon brands fa-github"><span class="label">GitHub</span></a>
+						</h2>
+
+					</header>
+			
+
+				<!-- Wrapper -->
+					<section id="wrapper">
+						<header>
+							<div class="inner">
+								<h2>Inverted Pendulum</h2>
+							</div>
+						</header>
+
+						<!-- Content -->
+							<div class="wrapper">
+								<div class="inner">
+
+									<h3 class="major">Project Overview</h3>
+									<p> 
+										For my current internship, I am working on an inverted pendulum. The goal of this project is to design a real world real-time control system to 
+										evaluate the performance of <a href="https://arpangujarati.github.io/pdfs/rtss2022_paper.pdf">In-ConcReTes</a>, a Byzantine Fault Tolerant key-value store.
+										I am currently working on the control system integration part of this project, with the electro-mechanical design and build largely complete.
+									</p>
+									<h3 class="major">Firmware Developent</h3>
+									<p>
+										I developed all the <a href="https://github.com/adarshgovi/InvertedPendulum">firmware</a> for the pendulum in C++ for a Raspberry Pi. This included developing a <a href="https://github.com/adarshgovi/AS_5600">library</a> to communicate with the
+										AS5600 rotary encoder over I2C, motor control code, a PID controller and a real-time telemetry interface so far. 
+									</p>
+									
+									<h3 class="major">Control System</h3>
+									<p>
+										I am currently working on implementing the controls for the pendulum to achieve swing-up and balancing capabilities. This has involved
+										modelling the physical system and learning more about various controllers such as LQR and PID. The largest learning from this stage has 
+										been the importance of creating insightful debugging tools, such as live telemetry and visualizations to iterate the system.
+									</p>
+									
+									<h3 class="major">Electro-Mechanical Design and Build</h3>
+									<p>
+										To design and build the pendulum, I created a CAD model on OnShape as seen below. The design is largely inspired by an <a href="https://www.hackster.io/tloinny/open-source-inverted-pendulum-419c28#toc-files-2">
+											open-sourced pendulum design</a>. Additionally, I sized and ordered appropriate mechanical and electrical components given the 
+											system specifications, built the structure and completed the electrical integration. Building the pendulum involved
+											using 3D printers, laser cutters, soldering irons and other tools. The electrical integration phase included sizing the power supply, testing motor driver and various sensor circuits
+											and planning wiring with modularity in mind.
+									</p>
+									<div class="col"><span class="image fit"><img src="images/InvertedPendulum/CAD_Model_With_Arm.png" alt="" /></span></div>
+						
+									<h3 class="major">Other Projects</h3>
+									<section class="features">
+										<article>
+											<a href="Chonky.html" class="image"><img src="images/chonky1.png"  alt="" /></a>
+											<h3 class="major">Autonomous Treasure Retrieval Robot</h3>
+											<p>A robot designed to navigate an obstacle course while retrieving objects for 2022 Annual Engineering Physics Robotics Competition </p>
+											<a href="Chonky.html" class="special">Learn more</a>
+										</article>
+										<article>
+											<a href="/autonomous_rover.html" class="image"><img src="images/autonomous_rover/com_vis_comp.png" alt="" /></a>
+											<h3 class="major">2nd Place - Autonomous Driving Competition</h3>
+											<p>I worked to train a rover to drive around a simulated road while detecting license plates of nearby vehicles, avoiding pedestrians and other moving vehicles. </p>
+											<a href="/autonomous_rover.html" class="special">Learn more</a>
+										</article>
+									</section>
+
+								</div>
+							</div>
+
+					</section>
+
+				<!-- Footer -->
+				<section id="footer">
+					<div class="inner">
+						<h2 class="major">Get in touch</h2>
+						<p>If you'd like to learn more about any of my projects or get in touch about an opportunity, please reach out to me via LinkedIn or Email.</p>
+						<ul class="contact">
+							<li class="icon brands fa-linkedin"><a href="https://www.linkedin.com/in/adarsh-govindan/">linkedin.com/in/adarsh-govindan</a></li>
+							<li class="icon brands fa-github"><a href="https://github.com/adarshgovi">github.com/adarshgovi</a></li>
+							<li class="icon fa-envelope"><a href="adarshkgovindan@gmail.com">adarshkgovindan@gmail.com</a></li>
+						</ul>
+					</div>
+				</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
