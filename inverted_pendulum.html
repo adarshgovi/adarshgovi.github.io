@@ -52,8 +52,13 @@
 									</p>
 									<h3 class="major">Firmware Developent</h3>
 									<p>
-										I developed all the <a href="https://github.com/adarshgovi/InvertedPendulum">firmware</a> for the pendulum in C++ for a Raspberry Pi. This included developing a <a href="https://github.com/adarshgovi/AS_5600">library</a> to communicate with the
-										AS5600 rotary encoder over I2C, motor control code, a PID controller and a real-time telemetry interface so far. 
+										I developed all the <a href="https://github.com/adarshgovi/InvertedPendulum">firmware</a> for the pendulum in C++ for a Raspberry Pi. This included developing a 
+										<a href="https://github.com/adarshgovi/AS_5600">library</a> to communicate with the AS5600 rotary encoder over I2C, motor control code, a PID controller and a real-time telemetry interface so far. 
+									</p>
+									<p>
+										In writing the firmware, I learned more about the I2C communication protocol and how linux handles I2C communication through. 										
+										To create real time plotting, I learned more about the concept of pipes in Linux and how they can be used for interprocess communication so that I could communicate between the controller process to a separate plotting process in real time. 
+										I also tested out a multithreaded implementation of the pendulum controller, which led me to deal with the headaches of shared data in multithreaded environments and the importance of mutexes and semaphores.
 									</p>
 									<div class="col" style="text-align: center;">
 										<span class="image fit" style="display: inline-block; width: 50%;">
@@ -64,8 +69,11 @@
 									<h3 class="major">Control System</h3>
 									<p>
 										I am currently working on implementing the controls for the pendulum to achieve swing-up and balancing capabilities. This has involved
-										modelling the physical system and learning more about various controllers such as LQR and PID. The largest learning from this stage has 
-										been the importance of creating insightful debugging tools, such as live telemetry and visualizations to iterate the system.
+										modelling the physical system to get a better understand of system dynamics and learning more about the specific use cases for various controllers such as LQR and PID. 
+									</p>
+									<p>	
+										In learning about controls through some independent research, I developed a better understanding of how control systems can be characterized as
+										controllable or uncontrollable and how we can use Matlab to analyze and simulate a control system. This has allowed me to have a more systematic approach in developing the controller for my pendulum.
 									</p>
 
 									<div class="col" style="text-align: center;">
@@ -83,12 +91,18 @@
 											using 3D printers, laser cutters, soldering irons and other tools. The electrical integration phase included sizing the power supply, testing motor driver and various sensor circuits
 											and planning wiring with modularity in mind.
 									</p>
-									
+									<p></p>
 									<div class="col" style="text-align: center;">
 										<span class="image fit" style="display: inline-block; width: 50%;">
 											<img src="images/InvertedPendulum/CAD_Model_With_Arm.png" alt="" style="max-width: 100%; height: auto; margin: 0 auto;" />
 										</span>
 									</div>
+											Building the pendulum out has given me a better appreciation for various manufacturing techniques and when to use them. For example, while 3D printing is great when designing intricate and difficult to manfacture parts, 
+											the time delay associated with reprinting or iterating a part incentivizes using more traditional machine shop tools and materials such as sheet metal and MDF sheets. 
+											Additionally, I learned more about the importance of modularity in design and how it can make the build process much easier. Using aluminium extrusions for the frame allowed me to quickly change out specific substructures
+											without having to take the entire pendulum apart. 
+									</p>
+									
 						
 									<h3 class="major">Other Projects</h3>
 									<section class="features">
