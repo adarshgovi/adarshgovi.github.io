@@ -1,0 +1,163 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Adarsh - EDF Scheduler and SRP Implementation</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/inverted_pendulum.css" />
+		<link rel="icon" href="images/logo2.ico">
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="index.html">Adarsh's Portfolio</a></h1>
+
+						<h2>
+							<a href="https://www.linkedin.com/in/adarsh-govindan/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a>
+							<a href="https://github.com/adarshgovi" class="icon brands fa-github"><span class="label">GitHub</span></a>
+						</h2>
+
+					</header>
+		
+				<!-- Wrapper -->
+					<section id="wrapper">
+						<header>
+							<div class="inner">
+								<h2>EDF Scheduler and SRP Implementation</h2>
+								<p><a href="https://github.com/adarshgovi/CPSC538-Project-Submission" class="special">Github Repository</a></p>
+							</div>
+						</header>
+
+						<!-- Content -->
+							<div class="wrapper">
+								<div class="inner">
+
+									<h3 class="major">Project Overview</h3>
+									<p>
+										This project extends FreeRTOS by implementing two major features: an <strong>Earliest Deadline First (EDF)</strong> scheduling algorithm and <strong>Stack Resource Policy (SRP)</strong> mechanisms and provides an API for user access that follows FreeRTOS conventions. FreeRTOS is a popular open-source real-time operating system (RTOS) designed for embedded systems, enabling precise task scheduling and resource management. These enhancements improve task prioritization and resource management in real-time systems. 
+										The project was developed on a Raspberry Pi Pico using the C programming language. 
+										I completed this project as part of CPSC 538G Real-Time Systems at UBC.
+									</p>
+
+									<h3 class="major">What is EDF and SRP?</h3>
+									<p>
+										<strong>EDF (Earliest Deadline First):</strong> A dynamic scheduling algorithm that prioritizes tasks based on their deadlines. The task with the earliest deadline is executed first, ensuring time-critical operations are performed within their constraints.
+									</p>
+									<p>
+										<strong>SRP (Stack Resource Policy):</strong> A protocol to manage resource access in priority-driven systems. It prevents priority inversion and deadlocks by assigning a system ceiling to resources and ensuring tasks adhere to these ceilings.
+									</p>
+
+									<h3 class="major">EDF Scheduler Implementation Details</h3>
+									<ul>
+										<li><strong>Task Control Block Modifications:</strong> Introduced fields like TaskDeadline, TaskPeriod, and ActivationTime.</li>
+										<li><strong>EDF Task Creation:</strong> A dedicated method to initialize tasks with EDF-specific parameters.</li>
+										<li><strong>Admission Control:</strong> Ensures system utilization does not exceed 1 at task creation.</li>
+										<li><strong>Deadline Monitoring:</strong> Detects and handles missed deadlines with customizable options.</li>
+										<li><strong>Demo Tasks:</strong> Included to validate EDF functionality with busy loops simulating workloads.</li>
+									</ul>
+
+									<p>
+										With my implementation, users can call the <code>xTaskCreateEDF</code> function to create tasks with periodic execution. It calculates activation times and absolute deadlines dynamically for each task. Admission control ensures that tasks are only admitted if system utilization allows.
+									</p>
+
+									<h3 class="major">SRP Implementation</h3>
+									<p>
+										The project integrates <strong>Stack Resource Policy (SRP)</strong> mechanisms into FreeRTOS to manage resource access in systems with priority inheritance requirements. This ensures efficient and deterministic resource sharing.
+									</p>
+
+									<ul>
+										<li><strong>System Ceiling Management:</strong> Tracks active system ceilings to enforce resource access rules.</li>
+										<li><strong>SRP Binary Semaphores:</strong> Custom semaphores with SRP properties like priority ceiling and maximum task priority.</li>
+										<li><strong>Functions:</strong> 
+											<ul>
+												<li><code>SRP_GetCurrentCeiling:</code> Retrieves the current system ceiling.</li>
+												<li><code>xSRPCreateBinary:</code> Creates semaphores with SRP properties.</li>
+												<li><code>xSRPSemaphoreTake:</code> Acquires an SRP semaphore.</li>
+												<li><code>xSRPSemaphoreGive:</code> Releases an SRP semaphore.</li>
+											</ul>
+										</li>
+									</ul>
+
+									<p>
+										The SRP mechanisms prevent priority inversion by enforcing system ceilings and simplify real-time system design.
+									</p>
+
+									<!-- <div class="col" style="text-align: center;">
+										<span class="image fit" style="display: inline-block; width: 50%;">
+										  <img src="images/EDF_Scheduler/demo_task_output.png" alt="Demo Task Output" style="max-width: 100%; height: auto; margin: 0 auto;" />
+										</span>
+									</div> -->
+
+
+									<h3 class="major">Testing the Scheduler and SRP</h3>
+									<p>
+										The enhancements were validated using demo workloads with the pico connected to various LEDs to visually demonstrate different tasks running. Tests verified the EDF scheduler's task execution order, deadline enforcement, and system utilization. For SRP, tasks were tested for deterministic resource sharing and priority inversion prevention. Initial testing involved simply stepping through the code to ensure correctness. 
+									<h3 class="major">Challenges and Lessons Learned</h3>
+									<p>
+										<strong>Challenges:</strong>
+										<ul>
+											<li>Integrating EDF with the existing FreeRTOS scheduler required a deep understanding of its architecture.</li>
+											<li>Debugging timing issues on the Raspberry Pi Pico due to its limited debugging tools.</li>
+											<li>Ensuring resource ceilings were correctly enforced under SRP in all edge cases.</li>
+										</ul>
+									</p>
+									<p>
+										<strong>Lessons Learned:</strong>
+										<ul>
+											<li>Gained proficiency in FreeRTOS internals and task scheduling concepts.</li>
+											<li>Developed a systematic approach to debugging real-time systems.</li>
+											<li>Improved understanding of real-time scheduling algorithms and resource management protocols.</li>
+										</ul>
+									</p>
+
+									<h3 class="major">Other Projects</h3>
+									<section class="features">
+										<article>
+											<a href="inverted_pendulum.html" class="image"><img src="images/InvertedPendulum/pendulum_gif.gif" alt="" /></a>
+											<h3 class="major">Inverted Pendulum</h3>
+											<p>Designed a real-time control system to evaluate the performance of a Byzantine Fault Tolerant key-value store.</p>
+											<a href="inverted_pendulum.html" class="special">Learn more</a>
+										</article>
+										<article>
+											<a href="autonomous_rover.html" class="image"><img src="images/autonomous_rover/com_vis_comp.png" alt="" /></a>
+											<h3 class="major">2nd Place - Autonomous Driving Competition</h3>
+											<p>Trained a rover to drive on a simulated road, detecting license plates and avoiding obstacles.</p>
+											<a href="autonomous_rover.html" class="special">Learn more</a>
+										</article>
+									</section>
+
+								</div>
+							</div>
+
+					</section>
+
+				<!-- Footer -->
+				<section id="footer">
+					<div class="inner">
+						<h2 class="major">Get in touch</h2>
+						<p>If you'd like to learn more about any of my projects or get in touch about an opportunity, please reach out via LinkedIn or Email.</p>
+						<ul class="contact">
+							<li class="icon brands fa-linkedin"><a href="https://www.linkedin.com/in/adarsh-govindan/">linkedin.com/in/adarsh-govindan</a></li>
+							<li class="icon brands fa-github"><a href="https://github.com/adarshgovi">github.com/adarshgovi</a></li>
+							<li class="icon fa-envelope"><a href="mailto:adarshkgovindan@gmail.com">adarshkgovindan@gmail.com</a></li>
+						</ul>
+					</div>
+				</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
