@@ -1,0 +1,169 @@
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Adarsh - IMU-Controlled Gantry Motion Recorder</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/inverted_pendulum.css" />
+		<link rel="icon" href="images/logo2.ico">
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="index.html">Adarsh's Portfolio</a></h1>
+
+						<h2>
+							<a href="https://www.linkedin.com/in/adarsh-govindan/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a>
+							<a href="https://github.com/adarshgovi" class="icon brands fa-github"><span class="label">GitHub</span></a>
+						</h2>
+
+					</header>
+
+				<!-- Wrapper -->
+					<section id="wrapper">
+						<header>
+							<div class="inner">
+								<h2>IMU-Controlled Gantry Motion Recorder</h2>
+								<p>STM32 + BNO055 firmware streaming orientation data into a Python desktop stack for virtual gantry replay.</p>
+							</div>
+						</header>
+
+						<!-- Content -->
+							<div class="wrapper">
+								<div class="inner">
+
+									<h3 class="major">Project Overview</h3>
+									<p>
+										This project captures motion from an IMU and reproduces the motion on a 3-axis gantry system.
+										An STM32F446RE reads orientation and motion data from a Bosch BNO055 over I2C, then streams measurements over UART/USB serial to desktop software.
+										The desktop application records, visualizes, and converts that data into trajectories that can be replayed on a virtual gantry and eventually physical hardware.
+									</p>
+
+									<h3 class="major">System Architecture</h3>
+									<p>
+										The system was built as a hardware-software pipeline so each piece could be debugged independently: sensor acquisition on the microcontroller,
+										frame parsing and control mapping on the desktop, then trajectory conversion and command execution on the gantry interface.
+									</p>
+									<ul>
+										<li><strong>Embedded node:</strong> BNO055 sensor reads and serial telemetry on STM32 firmware.</li>
+										<li><strong>Desktop pipeline:</strong> serial parsing, live visualization, and motion-control mapping in Python.</li>
+										<li><strong>Gantry adapter:</strong> command interface for a Zaber virtual gantry during development.</li>
+									</ul>
+
+									<h3 class="major">Firmware and Embedded Work</h3>
+									<p>
+										I implemented the firmware flow for IMU acquisition and reliable serial streaming on STM32.
+										That made orientation telemetry validation and downstream desktop integration significantly easier.
+									</p>
+
+									<h3 class="major">Desktop Tools and Motion Replay</h3>
+									<p>
+										I built a desktop toolkit in Python for live IMU monitoring, control, and trajectory replay.
+										The stack includes scripts for real-time Euler visualization, live control mapping, a unified control/plotting app,
+										and trajectory conversion utilities to drive the gantry system.
+									</p>
+									<ul>
+										<li><strong>Live visualization:</strong> quick validation of orientation stream quality and calibration health.</li>
+										<li><strong>Control mapping:</strong> convert IMU orientation into velocity-style gantry commands.</li>
+										<li><strong>Trajectory replay:</strong> recorded motion converted to command sequences for repeatable playback.</li>
+									</ul>
+
+									<h3 class="major">Dead-Reckoning Improvements</h3>
+									<p>
+										To improve trajectory quality from integrated acceleration, I implemented and evaluated several drift-reduction techniques:
+										high-pass filtering, ZUPT (zero velocity updates), and rest-bias correction.
+										The plots below show before/after comparisons from the project writeup.
+									</p>
+
+									<div class="row">
+										<div class="col-6 col-12-medium" style="text-align: center;">
+											<span class="image fit" style="display: inline-block; width: 95%;">
+												<img src="images/gantry%20puppet/Before%20ZUPT.png" alt="Before ZUPT" style="max-width: 100%; height: auto; margin: 0 auto;" />
+											</span>
+											<p>Before ZUPT</p>
+										</div>
+										<div class="col-6 col-12-medium" style="text-align: center;">
+											<span class="image fit" style="display: inline-block; width: 95%;">
+												<img src="images/gantry%20puppet/After%20ZUPT.png" alt="After ZUPT" style="max-width: 100%; height: auto; margin: 0 auto;" />
+											</span>
+											<p>After ZUPT</p>
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="col-6 col-12-medium" style="text-align: center;">
+											<span class="image fit" style="display: inline-block; width: 95%;">
+												<img src="images/gantry%20puppet/Before%20Rest%20Bias%20Correction.png" alt="Before rest bias correction" style="max-width: 100%; height: auto; margin: 0 auto;" />
+											</span>
+											<p>Before Rest Bias Correction</p>
+										</div>
+										<div class="col-6 col-12-medium" style="text-align: center;">
+											<span class="image fit" style="display: inline-block; width: 95%;">
+												<img src="images/gantry%20puppet/After%20Rest%20Bias%20Correction.png" alt="After rest bias correction" style="max-width: 100%; height: auto; margin: 0 auto;" />
+											</span>
+											<p>After Rest Bias Correction</p>
+										</div>
+									</div>
+
+									<h3 class="major">What I Learned</h3>
+									<p>
+										This project was a strong end-to-end embedded systems exercise across sensor interfaces, firmware telemetry, desktop tooling,
+										and motion-control integration. It reinforced the importance of observability and staged integration when building cross-platform robotics systems.
+									</p>
+
+									<h3 class="major">Related Projects</h3>
+									<section class="features">
+										<article>
+											<a href="inverted_pendulum.html" class="image"><img src="images/InvertedPendulum/ivp_tile_updated.png" alt="Inverted pendulum" /></a>
+											<h3 class="major">Inverted Pendulum</h3>
+											<p>Real-time embedded control and firmware development on a physical control system.</p>
+											<a href="inverted_pendulum.html" class="special">Learn more</a>
+										</article>
+										<article>
+											<a href="aerodesign.html" class="image"><img src="images/Aerodesign/cover_tile.png" alt="UBC AeroDesign" /></a>
+											<h3 class="major">Software Co-Lead @ UBC AeroDesign</h3>
+											<p>STM32 flight firmware, FreeRTOS architecture, and ground station software for autonomous aircraft.</p>
+											<a href="aerodesign.html" class="special">Learn more</a>
+										</article>
+									</section>
+
+								</div>
+							</div>
+
+					</section>
+
+				<!-- Footer -->
+				<section id="footer">
+					<div class="inner">
+						<h2 class="major">Get in touch</h2>
+						<p>If you'd like to learn more about any of my projects or get in touch about an opportunity, please reach out to me via LinkedIn or Email.</p>
+						<ul class="contact">
+							<li class="icon brands fa-linkedin"><a href="https://www.linkedin.com/in/adarsh-govindan/">linkedin.com/in/adarsh-govindan</a></li>
+							<li class="icon brands fa-github"><a href="https://github.com/adarshgovi">github.com/adarshgovi</a></li>
+							<li class="icon fa-envelope"><a href="mailto:adarshkgovindan@gmail.com">adarshkgovindan@gmail.com</a></li>
+						</ul>
+					</div>
+				</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
