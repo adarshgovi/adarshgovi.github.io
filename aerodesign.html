@@ -1,0 +1,199 @@
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Adarsh - UBC AeroDesign</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/aerodesign.css" />
+		<link rel="icon" href="images/logo2.ico">
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="index.html">Adarsh's Portfolio</a></h1>
+
+						<h2>
+							<a href="https://www.linkedin.com/in/adarsh-govindan/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a>
+							<a href="https://github.com/adarshgovi" class="icon brands fa-github"><span class="label">GitHub</span></a>
+						</h2>
+
+					</header>
+
+				<!-- Wrapper -->
+					<section id="wrapper">
+						<header>
+							<div class="inner">
+								<h2>Software Co-Lead @ UBC AeroDesign</h2>
+								<p>STM32-based autopilot firmware, FreeRTOS real-time control, and a custom desktop ground station.</p>
+							</div>
+						</header>
+
+						<!-- Content -->
+							<div class="wrapper">
+								<div class="inner">
+
+									<h3 class="major">Project Overview</h3>
+									<p>
+										I served as a software co-lead on UBC AeroDesign, where we built a 3.5 lb autonomous fixed-wing aircraft for the 2025 SAE AeroDesign competition.
+										Our team of 8 developers worked to deliver a flight software stack on STM32 hardware, from low-level sensor interfaces up to autonomous mission logic and ground station tooling.
+									</p>
+									<div class="col" style="text-align: center;">
+										<span class="image fit" style="display: inline-block; width: 70%;">
+											<img src="images/Aerodesign/cover_tile.png" alt="UBC AeroDesign aircraft" style="max-width: 100%; height: auto; margin: 0 auto;" />
+										</span>
+									</div>
+
+									<h3 class="major">System Architecture</h3>
+									<p>
+										The system is split across onboard firmware and a desktop ground station. On the aircraft side, the architecture emphasizes deterministic timing,
+										reliable telemetry, and clean interfaces between sensing, controls, and communications.
+									</p>
+									<p>
+										We designed our firmware architecture to use DMA-driven sensor acquisition while FreeRTOS tasks run flight controls,
+										waypoint planning, and ground station communications in parallel.
+										This lets us maintain high-rate measurements without blocking critical control loops.
+									</p>
+									<p>
+										At a high level, the flight stack is organized in four layers: hardware abstraction (UART, I2C, SPI, SD),
+										sensor and estimation, flight-state and control logic, and telemetry/command interfaces to the ground station.
+										This separation made it easier for multiple developers to iterate in parallel without breaking flight-critical pathways.
+									</p>
+									<div class="row">
+										<div class="col-6 col-12-medium" style="text-align: center;">
+											<span class="image fit" style="display: inline-block; width: 95%;">
+												<img src="images/Aerodesign/HW_Block_Diagram.png" alt="AeroDesign hardware block diagram" style="max-width: 100%; height: auto; margin: 0 auto;" />
+											</span>
+											<p>Hardware block diagram</p>
+										</div>
+										<div class="col-6 col-12-medium" style="text-align: center;">
+											<span class="image fit" style="display: inline-block; width: 95%;">
+												<img src="images/Aerodesign/SW_Block_Diagram.png" alt="AeroDesign software block diagram" style="max-width: 100%; height: auto; margin: 0 auto;" />
+											</span>
+											<p>Software block diagram</p>
+										</div>
+									</div>
+
+									<h3 class="major">Firmware Architecture Deep Dive</h3>
+									<p>
+										The STM32H723 flight controller firmware runs on FreeRTOS (CMSIS-RTOS v2) with dedicated tasks for flight control,
+										sensor fusion, and telemetry/logging. We intentionally split responsibilities so each loop has a clear deadline and ownership.
+									</p>
+									<ul>
+										<li><strong>flight_task_t (20 ms loop):</strong> runs the flight state machine, command execution, and actuator output updates.</li>
+										<li><strong>sensor_task (10 ms loop):</strong> reads and filters IMU, barometer, GNSS, and related sensor streams.</li>
+										<li><strong>sensor_log_task (100 ms loop):</strong> handles SD logging and telemetry transmission over the RFD900 link.</li>
+										<li><strong>Mutex-protected shared data:</strong> synchronized access to raw/filtered sensor buffers, debug UART, and SD card writes.</li>
+									</ul>
+
+									<h3 class="major">DMA and Communications Pipeline</h3>
+									<p>
+										To reduce CPU overhead and improve responsiveness, the firmware uses UART DMA Receive-to-Idle on both pilot-control and GNSS links.
+										Incoming packets are parsed in callback-driven flows, then handed to the control/state logic.
+									</p>
+									<ul>
+										<li><strong>ELRS control receiver:</strong> CRSF frames are decoded from DMA buffers, mapped to PWM commands, and used for arming/mode selection.</li>
+										<li><strong>ZED-F9P GNSS:</strong> UBX parsing runs on DMA-fed buffers; valid 3D-fix data gates the sensor task startup sequence.</li>
+										<li><strong>RFD900 telemetry + commands:</strong> packed telemetry streams to DACQSY while command packets tune gains, DLZ settings, and payload actions in flight.</li>
+									</ul>
+
+									<h3 class="major">Flight Modes, Control, and Safety</h3>
+									<p>
+										A dedicated flight state machine manages transitions between manual pass-through, auto-level/autopilot, and failsafe.
+										If receiver packets time out, the system enters failsafe and drives throttle and control surfaces to safe outputs.
+									</p>
+									<ul>
+										<li><strong>Autopilot control stack:</strong> PID-based attitude and heading logic computes roll/pitch/yaw commands and maps them into servo PWM limits.</li>
+										<li><strong>Waypoint / DLZ logic:</strong> heading and distance-to-target calculations drive autonomous approach and payload release decisions.</li>
+										<li><strong>Manual override path:</strong> pilot commands can retake authority through mode switches for safer testing and recovery.</li>
+									</ul>
+
+									<h3 class="major">Flight Controller and Avionics Stack</h3>
+									<p>
+										Our onboard stack combines a custom flight controller and supporting avionics hardware to handle sensing, control, and payload interfaces.
+										The goal was to create a robust platform we could iterate on quickly throughout testing.
+									</p>
+									<div class="col" style="text-align: center;">
+										<span class="image fit" style="display: inline-block; width: 75%;">
+											<img src="images/Aerodesign/hardware_stackup.png" alt="Flight controller and avionics stack" style="max-width: 100%; height: auto; margin: 0 auto;" />
+										</span>
+									</div>
+
+									<h3 class="major">Ground Station Software</h3>
+									<p>
+										We built a custom ground station with live flight tracking, telemetry visualization, and remote payload actuation.
+										The stack uses a Python and Redis backend with a React and Electron desktop frontend so our operators can monitor and command the aircraft in real time.
+									</p>
+									<p>
+										On the backend, the radio process unpacks incoming telemetry and publishes it to Redis streams.
+										On the desktop side, an Electron process bridges Redis updates into the React UI for live flight-state awareness, telemetry visualization,
+										and command dispatch back to the aircraft.
+									</p>
+									<div class="col" style="text-align: center;">
+										<span class="image fit" style="display: inline-block; width: 85%;">
+											<img src="images/Aerodesign/DacqsyGIF.gif" alt="Ground station telemetry interface" style="max-width: 100%; height: auto; margin: 0 auto;" />
+										</span>
+									</div>
+
+									<h3 class="major">Key Contributions</h3>
+									<ul>
+										<li>Led an 8-person software team to deliver an STM32 autopilot firmware stack for a fixed-wing aircraft in SAE AeroDesign.</li>
+										<li>Designed a DMA + FreeRTOS architecture for high-rate sensor ingestion, real-time flight control, waypoint planning, and telemetry handling.</li>
+										<li>Built the ground station software for live tracking, telemetry plots, and remote payload actuation using Python, Redis, React, and Electron.</li>
+									</ul>
+
+									<h3 class="major">Related Work in this Portfolio</h3>
+									<section class="features">
+										<article>
+											<a href="freertos_internals.html" class="image"><img src="images/FreeRTOS_Internals/cover_tile.png" alt="EDF and SRP in FreeRTOS" /></a>
+											<h3 class="major">EDF and SRP in FreeRTOS</h3>
+											<p>Kernel-level scheduler and synchronization work that directly informed the real-time architecture used in this project.</p>
+											<a href="freertos_internals.html" class="special">Learn more</a>
+										</article>
+										<article>
+											<a href="inverted_pendulum.html" class="image"><img src="images/InvertedPendulum/ivp_tile_updated.png" alt="Inverted pendulum" /></a>
+											<h3 class="major">Inverted Pendulum</h3>
+											<p>Real-time control and embedded systems experience that translated directly to flight software development.</p>
+											<a href="inverted_pendulum.html" class="special">Learn more</a>
+										</article>
+									</section>
+
+								</div>
+							</div>
+
+					</section>
+
+				<!-- Footer -->
+				<section id="footer">
+					<div class="inner">
+						<h2 class="major">Get in touch</h2>
+						<p>If you'd like to learn more about any of my projects or get in touch about an opportunity, please reach out to me via LinkedIn or Email.</p>
+						<ul class="contact">
+							<li class="icon brands fa-linkedin"><a href="https://www.linkedin.com/in/adarsh-govindan/">linkedin.com/in/adarsh-govindan</a></li>
+							<li class="icon brands fa-github"><a href="https://github.com/adarshgovi">github.com/adarshgovi</a></li>
+							<li class="icon fa-envelope"><a href="mailto:adarshkgovindan@gmail.com">adarshkgovindan@gmail.com</a></li>
+						</ul>
+					</div>
+				</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
